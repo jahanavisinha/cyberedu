@@ -32,19 +32,19 @@ export async function askClaude(prompt, systemPrompt = "") {
 
     if (!response.ok) {
         const err = await response.json();
+        console.error("Claude API error:", err);
         throw new Error(err?.error?.message || "Claude API request failed");
     }
 
     const data = await response.json();
 
-    // Extract all text blocks from the response
     return data.content
         .filter((block) => block.type === "text")
         .map((block) => block.text)
         .join("\n");
 }
 
-// ─── Prompts for the Threat Simulation module ───────────────────────
+// ─── Pre-built prompts for the Threat Simulation module ───────────────────────
 
 export const THREAT_SCENARIOS = [
     {
