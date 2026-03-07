@@ -1,5 +1,6 @@
 const CLAUDE_API_URL = "https://api.anthropic.com/v1/messages";
 const MODEL = "claude-sonnet-4-20250514";
+const API_KEY = import.meta.env.VITE_ANTHROPIC_API_KEY;
 
 /**
  * Sends a prompt to Claude and returns the response text.
@@ -22,6 +23,9 @@ export async function askClaude(prompt, systemPrompt = "") {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
+            "x-api-key": API_KEY,
+            "anthropic-version": "2023-06-01",
+            "anthropic-dangerous-direct-browser-access": "true",
         },
         body: JSON.stringify(body),
     });
