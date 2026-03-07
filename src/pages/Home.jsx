@@ -7,7 +7,7 @@ export default function Home() {
             {/* Hero Section */}
             <div style={styles.hero}>
                 <div style={styles.heroIcon}>🛡️</div>
-                <h1 style={styles.heroTitle}>Welcome to CyberEdu</h1>
+                <h1 style={styles.heroTitle}>Welcome to CyberAware</h1>
                 <p style={styles.heroSub}>
                     Learn core cybersecurity concepts, practice with AI-powered threat
                     simulations, and master using AI tools responsibly.
@@ -144,6 +144,10 @@ const styles = {
         padding: "1.4rem",
         cursor: "pointer",
         transition: "transform 0.2s, box-shadow 0.2s",
+        height: "100%",
+        boxSizing: "border-box",
+        display: "flex",
+        flexDirection: "column",
     },
     cardIcon: { fontSize: "2rem", marginBottom: "0.6rem" },
     cardTitle: { fontWeight: 700, fontSize: "1rem", marginBottom: "0.4rem" },

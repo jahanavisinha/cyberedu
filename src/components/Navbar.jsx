@@ -12,7 +12,7 @@ export default function Navbar() {
     return (
         <nav style={styles.nav}>
             <Link to="/" style={styles.brand}>
-                🛡️ CyberEdu
+                🛡️ CyberAware
             </Link>
             <div style={styles.links}>
                 {links.map((link) => (
