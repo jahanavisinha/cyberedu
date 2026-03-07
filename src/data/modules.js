@@ -152,6 +152,163 @@ const modules = [
         ],
     },
     {
+        id: "network",
+        icon: "🌐",
+        title: "Network Security",
+        color: "#06b6d4",
+        summary: "Protecting data as it travels across networks and the internet.",
+        topics: [
+            {
+                name: "Firewalls & IDS/IPS",
+                desc: "Controlling and monitoring traffic entering and leaving a network.",
+                detail:
+                    "A firewall filters traffic based on rules (allow/block by IP, port, protocol). An IDS (Intrusion Detection System) monitors for suspicious activity and alerts admins. An IPS (Intrusion Prevention System) goes further — it actively blocks threats in real time. Together they form the first line of network defense.",
+            },
+            {
+                name: "VPNs & Secure Tunnels",
+                desc: "Encrypting network traffic to protect data in transit.",
+                detail:
+                    "A VPN (Virtual Private Network) creates an encrypted tunnel between your device and a server, hiding your traffic from eavesdroppers. Used by remote workers to securely access corporate networks. Protocols include OpenVPN, WireGuard, and IPSec. TLS/SSL does the same for web traffic (the padlock in your browser).",
+            },
+            {
+                name: "Common Network Attacks",
+                desc: "Understanding man-in-the-middle, DNS spoofing, and port scanning.",
+                detail:
+                    "A Man-in-the-Middle (MitM) attack intercepts communication between two parties. DNS spoofing redirects users to fake websites by corrupting DNS records. Port scanning (using tools like Nmap) is used by attackers to discover open services on a target. Knowing these attacks helps defenders build better protections.",
+            },
+        ],
+        quiz: [
+            {
+                q: "What is the difference between an IDS and an IPS?",
+                opts: [
+                    "IDS encrypts traffic; IPS decrypts it",
+                    "IDS only detects threats; IPS actively blocks them",
+                    "IDS is hardware; IPS is software",
+                    "They are the same thing",
+                ],
+                ans: 1,
+            },
+            {
+                q: "Which protocol is commonly used to secure web traffic (shown as a padlock in browsers)?",
+                opts: ["FTP", "HTTP", "TLS/SSL", "DNS"],
+                ans: 2,
+            },
+            {
+                q: "An attacker intercepts communication between a user and their bank. This is called?",
+                opts: ["Phishing", "Port Scanning", "Man-in-the-Middle", "DNS Spoofing"],
+                ans: 2,
+            },
+        ],
+    },
+    {
+        id: "encryption",
+        icon: "🔒",
+        title: "Encryption",
+        color: "#8b5cf6",
+        summary: "Scrambling data so only authorized parties can read it.",
+        topics: [
+            {
+                name: "Symmetric Encryption",
+                desc: "One key is used to both encrypt and decrypt data.",
+                detail:
+                    "Symmetric encryption is fast and efficient, making it ideal for encrypting large amounts of data. Both sender and receiver share the same secret key. The challenge is securely exchanging that key. Common algorithms: AES-256 (used in file encryption, Wi-Fi security) and ChaCha20.",
+            },
+            {
+                name: "Asymmetric Encryption",
+                desc: "A public key encrypts data; only the private key can decrypt it.",
+                detail:
+                    "Asymmetric encryption uses a key pair — a public key (shared openly) and a private key (kept secret). Anyone can encrypt a message with your public key, but only you can decrypt it with your private key. Used in HTTPS, email signing, and SSH. Common algorithms: RSA, ECC. Slower than symmetric but solves the key exchange problem.",
+            },
+            {
+                name: "Hashing",
+                desc: "One-way transformation of data into a fixed-length fingerprint.",
+                detail:
+                    "Unlike encryption, hashing is one-way — you cannot reverse a hash to get the original data. It's used to verify integrity and store passwords securely. SHA-256 produces a 256-bit hash. bcrypt and Argon2 are used for password hashing because they're intentionally slow, making brute-force attacks impractical.",
+            },
+        ],
+        quiz: [
+            {
+                q: "Which encryption type uses the same key for both encrypting and decrypting?",
+                opts: ["Asymmetric", "Hashing", "Symmetric", "Public-key"],
+                ans: 2,
+            },
+            {
+                q: "What is the main advantage of asymmetric encryption over symmetric?",
+                opts: [
+                    "It's faster",
+                    "It solves the key exchange problem",
+                    "It uses shorter keys",
+                    "It can't be broken",
+                ],
+                ans: 1,
+            },
+            {
+                q: "Why is bcrypt preferred over SHA-256 for storing passwords?",
+                opts: [
+                    "It produces longer hashes",
+                    "It's reversible",
+                    "It's intentionally slow, resisting brute-force attacks",
+                    "It uses asymmetric keys",
+                ],
+                ans: 2,
+            },
+        ],
+    },
+    {
+        id: "social-engineering",
+        icon: "🎭",
+        title: "Social Engineering",
+        color: "#f97316",
+        summary: "Manipulating people — not systems — to gain unauthorized access.",
+        topics: [
+            {
+                name: "Pretexting",
+                desc: "Creating a fabricated scenario to manipulate a target.",
+                detail:
+                    "Pretexting involves inventing a believable story to extract information or access. An attacker might impersonate an IT auditor, a new employee, or a vendor. Unlike phishing, pretexting often happens in person or over the phone and relies on building trust over time before making a request.",
+            },
+            {
+                name: "Baiting & Quid Pro Quo",
+                desc: "Luring victims with something enticing or offering a fake service.",
+                detail:
+                    "Baiting leaves infected USB drives in parking lots, hoping curious employees will plug them in. Quid pro quo attacks offer something (e.g., free tech support) in exchange for credentials or access. Both exploit human curiosity and the desire for something free or helpful.",
+            },
+            {
+                name: "Tailgating & Physical Security",
+                desc: "Gaining physical access by following authorized personnel.",
+                detail:
+                    "Tailgating (or piggybacking) is when an attacker follows an authorized person through a secure door without scanning their own badge. Physical security matters as much as digital — an attacker inside your building can plug into your network, steal devices, or shoulder-surf passwords. Always challenge unknown individuals in secure areas.",
+            },
+        ],
+        quiz: [
+            {
+                q: "An attacker leaves infected USB drives in a company parking lot. This is called?",
+                opts: ["Pretexting", "Tailgating", "Baiting", "Vishing"],
+                ans: 2,
+            },
+            {
+                q: "What is pretexting?",
+                opts: [
+                    "Sending fake emails",
+                    "Fabricating a scenario to manipulate a target",
+                    "Following someone through a secure door",
+                    "Scanning for open ports",
+                ],
+                ans: 1,
+            },
+            {
+                q: "Which of these is the best defense against tailgating?",
+                opts: [
+                    "Stronger passwords",
+                    "Firewalls",
+                    "Challenging unknown individuals and enforcing badge policies",
+                    "Encrypting hard drives",
+                ],
+                ans: 2,
+            },
+        ],
+    },
+    {
         id: "ai-skills",
         icon: "🤖",
         title: "AI for Cybersecurity",
