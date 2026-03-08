@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import modules from "../data/modules";
+import { useProgress } from "../context/ProgressContext";
 
 export default function ModulePage() {
     const { id } = useParams();
     const mod = modules.find((m) => m.id === id);
     const [tab, setTab] = useState("learn");
     const [quizState, setQuizState] = useState({ idx: 0, score: 0, answered: null, done: false });
+    const { markComplete } = useProgress();
 
     if (!mod) {
         return (
@@ -28,8 +30,10 @@ export default function ModulePage() {
 
     const nextQuestion = () => {
         const next = quizState.idx + 1;
-        if (next >= mod.quiz.length) setQuizState((s) => ({ ...s, done: true }));
-        else setQuizState((s) => ({ ...s, idx: next, answered: null }));
+        if (next >= mod.quiz.length) {
+            markComplete(mod.id);
+            setQuizState((s) => ({ ...s, done: true }));
+        } else setQuizState((s) => ({ ...s, idx: next, answered: null }));
     };
 
     const resetQuiz = () => setQuizState({ idx: 0, score: 0, answered: null, done: false });

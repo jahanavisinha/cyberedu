@@ -308,6 +308,65 @@ const modules = [
             },
         ],
     },
+    {
+        id: "security-hygiene",
+        icon: "🧹",
+        title: "Security Hygiene",
+        color: "#14b8a6",
+        summary: "Everyday habits and practices that dramatically reduce your attack surface.",
+        topics: [
+            {
+                name: "Device & Software Hygiene",
+                desc: "Keeping your devices and software updated and hardened.",
+                detail:
+                    "Most breaches exploit known vulnerabilities that already have patches available. Enable automatic updates for your OS, browser, and apps. Uninstall software you don't use — every installed program is a potential attack surface. Disable services you don't need (Bluetooth, remote desktop). Enable full-disk encryption (FileVault on Mac, BitLocker on Windows) so data is unreadable if your device is stolen.",
+            },
+            {
+                name: "Backup Strategy — The 3-2-1 Rule",
+                desc: "Protecting your data so ransomware and hardware failure can't destroy it.",
+                detail:
+                    "The 3-2-1 rule: keep 3 copies of your data, on 2 different media types, with 1 copy offsite (cloud or physical). Test your backups regularly — an untested backup is not a backup. For organizations, backups should be air-gapped (disconnected from the main network) so ransomware can't encrypt them too. Tools: Time Machine (Mac), Windows Backup, Backblaze, and AWS S3.",
+            },
+            {
+                name: "Least Privilege & Zero Trust",
+                desc: "Only grant the access that is absolutely necessary — nothing more.",
+                detail:
+                    "The Principle of Least Privilege (PoLP) means every user, app, and system should have only the minimum permissions needed to do their job. Zero Trust takes this further: 'never trust, always verify' — even users inside the network must authenticate and be authorized for every resource. In practice: avoid using admin accounts for daily tasks, review permissions regularly, and revoke access immediately when someone leaves an organization.",
+            },
+        ],
+        quiz: [
+            {
+                q: "What does the 3-2-1 backup rule mean?",
+                opts: [
+                    "3 passwords, 2 devices, 1 cloud account",
+                    "3 copies of data, on 2 media types, with 1 offsite copy",
+                    "Back up every 3 days, 2 weeks, and 1 month",
+                    "3 encryptions, 2 keys, 1 recovery code",
+                ],
+                ans: 1,
+            },
+            {
+                q: "What is the Principle of Least Privilege?",
+                opts: [
+                    "All users share the same admin account",
+                    "Users get maximum access to avoid bottlenecks",
+                    "Users and systems get only the minimum permissions needed",
+                    "Privileged accounts never require passwords",
+                ],
+                ans: 2,
+            },
+            {
+                q: "Why should backups be air-gapped from the main network?",
+                opts: [
+                    "To make them faster to access",
+                    "To prevent ransomware from encrypting them too",
+                    "To comply with GDPR",
+                    "To allow public access",
+                ],
+                ans: 1,
+            },
+        ],
+    },
     // ── 4 UNIQUE MODULES ──────────────────────────────────────────────────────
     {
         id: "darkweb",
