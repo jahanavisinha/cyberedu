@@ -308,6 +308,213 @@ const modules = [
             },
         ],
     },
+    // ── 4 UNIQUE MODULES ──────────────────────────────────────────────────────
+    {
+        id: "darkweb",
+        icon: "🕵️",
+        title: "Dark Web & OSINT",
+        color: "#64748b",
+        summary: "How attackers use hidden networks and open-source intelligence.",
+        topics: [
+            {
+                name: "What is the Dark Web?",
+                desc: "The encrypted, anonymous layer of the internet not indexed by search engines.",
+                detail:
+                    "The internet has three layers: the Surface Web (Google-indexed), the Deep Web (paywalled/private content like email), and the Dark Web (requires Tor browser, intentionally anonymous). Cybercriminals use the dark web to sell stolen credentials, malware, and hacking services. Security researchers also monitor it to detect data breaches early.",
+            },
+            {
+                name: "OSINT — Open Source Intelligence",
+                desc: "Gathering information about targets using publicly available sources.",
+                detail:
+                    "OSINT is the practice of collecting intelligence from public sources: social media, job postings, WHOIS records, GitHub repos, and news articles. Attackers use OSINT to profile targets before an attack. Defenders use it to understand their own exposure. Tools include Maltego, Shodan (finds internet-connected devices), and theHarvester.",
+            },
+            {
+                name: "Protecting Your Digital Footprint",
+                desc: "Reducing the information attackers can gather about you or your organization.",
+                detail:
+                    "Every public post, job listing, and GitHub commit tells attackers something. Minimize exposure by: auditing what your organization shares publicly, scrubbing sensitive info from job postings (don't list internal tools), setting social media to private, and using Have I Been Pwned (haveibeenpwned.com) to check if your credentials appear in known data breaches.",
+            },
+        ],
+        quiz: [
+            {
+                q: "Which tool is used to find internet-connected devices exposed to the public internet?",
+                opts: ["Maltego", "Shodan", "Wireshark", "Nmap"],
+                ans: 1,
+            },
+            {
+                q: "What layer of the internet requires the Tor browser to access?",
+                opts: ["Surface Web", "Deep Web", "Dark Web", "Shadow Web"],
+                ans: 2,
+            },
+            {
+                q: "OSINT primarily uses which type of sources?",
+                opts: [
+                    "Classified government databases",
+                    "Hacked private servers",
+                    "Publicly available information",
+                    "Encrypted dark web forums",
+                ],
+                ans: 2,
+            },
+        ],
+    },
+    {
+        id: "incident-response",
+        icon: "🚨",
+        title: "Incident Response",
+        color: "#dc2626",
+        summary: "How organizations detect, contain, and recover from cyberattacks.",
+        topics: [
+            {
+                name: "The IR Lifecycle",
+                desc: "The 6 phases every security team follows after a breach.",
+                detail:
+                    "NIST defines 6 IR phases: (1) Preparation — building plans and tools before an incident; (2) Identification — detecting and confirming an incident occurred; (3) Containment — stopping the spread (short-term: isolate affected systems; long-term: patch and harden); (4) Eradication — removing the threat entirely; (5) Recovery — restoring systems safely; (6) Lessons Learned — documenting what happened and improving defenses.",
+            },
+            {
+                name: "Digital Forensics",
+                desc: "Collecting and preserving evidence from compromised systems.",
+                detail:
+                    "Digital forensics involves capturing memory dumps, disk images, and log files without altering the original evidence (chain of custody). Forensic analysts look for indicators of compromise (IOCs): unusual processes, modified files, unknown network connections. Tools: Autopsy, Volatility (memory forensics), and FTK Imager.",
+            },
+            {
+                name: "Tabletop Exercises",
+                desc: "Simulated attack scenarios used to train and test IR teams.",
+                detail:
+                    "A tabletop exercise walks a team through a simulated breach scenario in a meeting room — no systems are actually touched. Teams discuss what they would do at each stage. It exposes gaps in communication, unclear roles, and missing playbooks. Most security frameworks (NIST, ISO 27001) recommend running these at least annually.",
+            },
+        ],
+        quiz: [
+            {
+                q: "Which IR phase involves isolating affected systems to stop an attack from spreading?",
+                opts: ["Identification", "Eradication", "Containment", "Recovery"],
+                ans: 2,
+            },
+            {
+                q: "What is the purpose of a tabletop exercise?",
+                opts: [
+                    "To install new security software",
+                    "To simulate an attack and test team response without touching real systems",
+                    "To recover deleted files",
+                    "To scan for open ports",
+                ],
+                ans: 1,
+            },
+            {
+                q: "Which tool is used for memory forensics during incident response?",
+                opts: ["Nmap", "Wireshark", "Volatility", "Metasploit"],
+                ans: 2,
+            },
+        ],
+    },
+    {
+        id: "secure-coding",
+        icon: "💻",
+        title: "Secure Coding",
+        color: "#16a34a",
+        summary: "Writing code that is resistant to attacks from the ground up.",
+        topics: [
+            {
+                name: "OWASP Top 10",
+                desc: "The ten most critical web application security risks.",
+                detail:
+                    "OWASP (Open Worldwide Application Security Project) publishes the Top 10 most dangerous web vulnerabilities. The current list includes: Injection (SQL, command), Broken Authentication, Sensitive Data Exposure, XML External Entities, Broken Access Control, Security Misconfiguration, XSS (Cross-Site Scripting), Insecure Deserialization, Using Components with Known Vulnerabilities, and Insufficient Logging. Every developer should know this list.",
+            },
+            {
+                name: "SQL Injection & XSS",
+                desc: "Two of the most exploited vulnerabilities in web applications.",
+                detail:
+                    "SQL Injection tricks a database into executing malicious queries by inserting SQL code into input fields (e.g., username: `admin'--`). Prevention: use parameterized queries / prepared statements, never concatenate user input into SQL. XSS (Cross-Site Scripting) injects malicious JavaScript into a webpage viewed by other users. Prevention: sanitize and encode all user-supplied output, use Content Security Policy (CSP) headers.",
+            },
+            {
+                name: "Shift Left Security",
+                desc: "Integrating security into every stage of the development lifecycle.",
+                detail:
+                    "Shift Left means moving security earlier (left) in the software development lifecycle — catching vulnerabilities during design and coding rather than after deployment. Practices include threat modeling, code reviews, static analysis (SAST tools like Semgrep, Snyk), dependency scanning, and security unit tests. The earlier a bug is caught, the cheaper it is to fix.",
+            },
+        ],
+        quiz: [
+            {
+                q: "What is the best defense against SQL Injection?",
+                opts: [
+                    "Firewalls",
+                    "Parameterized queries / prepared statements",
+                    "Encryption",
+                    "Strong passwords",
+                ],
+                ans: 1,
+            },
+            {
+                q: "XSS attacks inject what into web pages?",
+                opts: ["SQL commands", "Malicious JavaScript", "Encrypted payloads", "Fake DNS records"],
+                ans: 1,
+            },
+            {
+                q: "What does 'Shift Left' mean in secure development?",
+                opts: [
+                    "Moving servers to the left side of the data center",
+                    "Integrating security earlier in the development lifecycle",
+                    "Using left-to-right encryption",
+                    "Shifting firewall rules to allow more traffic",
+                ],
+                ans: 1,
+            },
+        ],
+    },
+    {
+        id: "cyber-law",
+        icon: "⚖️",
+        title: "Cyber Law & Ethics",
+        color: "#0ea5e9",
+        summary: "The legal and ethical boundaries every security professional must know.",
+        topics: [
+            {
+                name: "Key Cybersecurity Laws",
+                desc: "Laws that govern data protection, hacking, and privacy.",
+                detail:
+                    "CFAA (Computer Fraud and Abuse Act) — US law making unauthorized computer access a federal crime. GDPR (General Data Protection Regulation) — EU law requiring organizations to protect personal data and report breaches within 72 hours. HIPAA — protects health data in the US. FERPA — protects student education records. Violating these carries heavy fines and criminal penalties. Security professionals must know which laws apply to their industry.",
+            },
+            {
+                name: "Ethical Hacking & Scope",
+                desc: "The difference between legal penetration testing and criminal hacking.",
+                detail:
+                    "Ethical hacking (penetration testing) is authorized — the tester has written permission (a 'scope of work') defining exactly what systems can be tested and when. Anything outside that scope is illegal, even if done with good intentions. Bug bounty programs (HackerOne, Bugcrowd) let researchers legally find and report vulnerabilities for rewards. Always get written authorization before testing any system.",
+            },
+            {
+                name: "Responsible Disclosure",
+                desc: "How to ethically report vulnerabilities you discover.",
+                detail:
+                    "Responsible disclosure (also called coordinated disclosure) means privately reporting a vulnerability to the affected organization and giving them time to fix it before going public. The standard window is 90 days (Google Project Zero's policy). Going public immediately (full disclosure) can harm users. Selling vulnerabilities to criminal groups is illegal and unethical. Always disclose responsibly.",
+            },
+        ],
+        quiz: [
+            {
+                q: "Which US law makes unauthorized computer access a federal crime?",
+                opts: ["GDPR", "HIPAA", "CFAA", "FERPA"],
+                ans: 2,
+            },
+            {
+                q: "What document must an ethical hacker always have before testing a system?",
+                opts: [
+                    "A non-disclosure agreement",
+                    "Written authorization defining the scope",
+                    "A government-issued security clearance",
+                    "A bug bounty account",
+                ],
+                ans: 1,
+            },
+            {
+                q: "Responsible disclosure means?",
+                opts: [
+                    "Publishing vulnerabilities immediately to warn users",
+                    "Selling vulnerabilities to the highest bidder",
+                    "Privately reporting vulnerabilities and giving organizations time to fix them",
+                    "Reporting bugs only to law enforcement",
+                ],
+                ans: 2,
+            },
+        ],
+    },
     {
         id: "ai-skills",
         icon: "🤖",
